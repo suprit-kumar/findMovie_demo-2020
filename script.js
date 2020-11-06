@@ -9,7 +9,7 @@ $(document).ready(function(){
   function getMovieInfo(){
     var apiKey = 'f1ad043e';
     var movieName = $('#movie_name').val();
-    var apiUrl = "https://www.omdbapi.com/?apikey="+apiKey;
+    var apiUrl = "http://www.omdbapi.com/?apikey="+apiKey;
 
     if(movieName===''||movieName===undefined){
         swal("Enter Movie Name!");
