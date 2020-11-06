@@ -1,11 +1,13 @@
 $(document).ready(function(){
     
+    // Trigger find movie button
     $('#find_movie').click(function(){
         getMovieInfo();
     });
   });
 
 
+//   Getting movie details and appending into the modal popup
   function getMovieInfo(){
     var apiKey = 'f1ad043e';
     var movieName = $('#movie_name').val();
