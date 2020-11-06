@@ -1,45 +1,45 @@
-let mybutton = document.getElementById('mybtn');
-mybutton.addEventListener("click", displayAlert);
+$(document).ready(function(){
+    
+    $('#find_movie').click(function(){
+        getMovieInfo();
+    });
+  });
 
-function displayAlert(){
-    swal({
-        text: 'Search for a movie. e.g. "La La Land".',
-        content: "input",
-        button: {
-          text: "Search!",
-          closeModal: false,
-        },
-      })
-      .then(name => {
-        if (!name) throw null;
-       
-        return fetch(`https://itunes.apple.com/search?term=${name}&entity=movie`);
-      })
-      .then(results => {
-        return results.json();
-      })
-      .then(json => {
-        const movie = json.results[0];
-       
-        if (!movie) {
-          return swal("No movie was found!");
-        }
-       
-        const name = movie.trackName;
-        const imageURL = movie.artworkUrl100;
-       
-        swal({
-          title: "Top result:",
-          text: name,
-          icon: imageURL,
+
+  function getMovieInfo(){
+    var apiKey = 'f1ad043e';
+    var movieName = $('#movie_name').val();
+    var apiUrl = "http://www.omdbapi.com/?apikey="+apiKey;
+
+    if(movieName===''||movieName===undefined){
+        swal("Enter Movie Name!");
+        return false;
+    }else{
+        $.ajax({
+            type:'GET',
+            url:apiUrl+"&t="+movieName,
+            success:function(data){
+                if(data.Poster === "N/A"){
+                    $('#movie_image').attr('src',"https://us.123rf.com/450wm/pavelstasevich/pavelstasevich1811/pavelstasevich181101028/112815904-stock-vector-no-image-available-icon-flat-vector-illustration.jpg?ver=6");
+                }else{
+                    $('#movie_image').attr('src',data.Poster);
+                }
+                $('#movie_title').text(data.Title);
+                $('#movie_director').text(data.Director);
+                $('#movie_genre').text(data.Genre);
+                $('#movie_language').text(data.Language);
+                $('#movie_rating').text(data.imdbRating);
+                $('#movie_release').text(data.Released);
+                $('#movieModal').modal('toggle');
+            },error:function(error){
+                console.log('Error during API call',error);
+            }
+        })
+    
+        $('#movieModal').on('hidden.bs.modal', function () {
+            location.reload();
         });
-      })
-      .catch(err => {
-        if (err) {
-          swal("Oh noes!", "The AJAX request failed!", "error");
-        } else {
-          swal.stopLoading();
-          swal.close();
-        }
-      });
-}
+    }
+  }
+
+
