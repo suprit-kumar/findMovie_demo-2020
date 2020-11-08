@@ -4,5 +4,5 @@ Project will not work over https server . Because here i am using free api which
 Project will run fine in local environment.
 
 #How to run
-1.Clone the project in local
-2.Open project in VS Code and click on live-server.
+(i).Clone the project in local
+(ii).Open project in VS Code and click on live-server.
