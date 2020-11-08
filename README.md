@@ -1,6 +1,6 @@
 # findMovie_demo_2020
 
-Project is not working over https server . Because here i am using free api which is in "http" . Github project url is secured with "https" so it is blocking http url.
+Project will not work over https server . Because here i am using free api which is in "http" . Github project url is secured with "https" so it is blocking http url.
 Project will run fine in local environment.
 
 #How to run
