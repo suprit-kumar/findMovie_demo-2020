@@ -1,8 +1,8 @@
-# findMovie_demo_2020
+# Find movie related information
 
-Project is not working over https server . Because here i am using free api which is in "http" . Github project url is secured with "https" so it is blocking http url.
+Project will not work over https server . Because here i am using free api which is in "http" . Github project url is secured with "https" so it is blocking http url.
 Project will run fine in local environment.
 
 #How to run
-1.Clone the project in local
-2.Open project in VS Code and click on live-server.
+(i).Clone the project in local
+(ii).Open project in VS Code and click on live-server.
